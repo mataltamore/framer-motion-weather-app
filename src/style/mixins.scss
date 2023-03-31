@@ -1,0 +1,19 @@
+@mixin media($breakpoint) {
+  @if ($breakpoint == tablet) {
+    @media (min-width: 48rem) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == desktop) {
+    @media (min-width: 75rem) {
+      @content;
+    }
+  }
+}
+
+@mixin cleanButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

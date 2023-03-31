@@ -1,0 +1,67 @@
+@import "../../style/mixins.scss";
+
+$barWidth: 2.5rem;
+$barHeight: 1rem;
+
+@mixin iconPositions($pos) {
+  position: absolute;
+  color: black;
+  top: $barHeight;
+
+  @if ($pos == left) {
+    left: calc($barWidth / 3);
+  }
+  @if ($pos == right) {
+    right: calc($barWidth / 2);
+    top: calc($barHeight - 5px);
+  }
+}
+
+@mixin defaultBorders() {
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+.container {
+  width: 100dvw;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    @include defaultBorders();
+    width: 300px;
+    position: relative;
+
+    & > input {
+      @include defaultBorders();
+      padding: $barHeight $barWidth;
+      text-transform: capitalize;
+      color: black;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.location {
+  @include iconPositions(left);
+}
+
+.search {
+  @include cleanButton;
+  @include iconPositions(right);
+
+  background-color: rgb(191, 236, 191);
+  border-radius: 30px;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+}
